@@ -5,11 +5,11 @@ const NavbarBottom = () => {
    return (
       <nav className="navbar-bottom">
          <ul className="navbar-list">
-            <li className="nav-item"><NavLink to="/dashboard" activeClassName="nav-link-active" className="nav-link">Dashboard</NavLink></li>
-            <li className="nav-item"><NavLink to="/tournaments" activeClassName="nav-link-active" className="nav-link">Tournaments</NavLink></li>
-            <li className="nav-item"><NavLink to="/schedule" activeClassName="nav-link-active" className="nav-link">Schedule</NavLink> </li>
-            <li className="nav-item"><NavLink to="/session" activeClassName="nav-link-active" className="nav-link">Session</NavLink></li>
-            <li className="nav-item"><NavLink to="/results" activeClassName="nav-link-active" className="nav-link">Results</NavLink></li>
+            <li className="nav-item"><NavLink to="/" exact activeClassName="nav-link-active" className="nav-link">Dashboard</NavLink></li>
+            <li className="nav-item"><NavLink to="/tournaments" exact activeClassName="nav-link-active" className="nav-link">Tournaments</NavLink></li>
+            <li className="nav-item"><NavLink to="/schedule" exact activeClassName="nav-link-active" className="nav-link">Schedule</NavLink> </li>
+            <li className="nav-item"><NavLink to="/session" exact activeClassName="nav-link-active" className="nav-link">Session</NavLink></li>
+            <li className="nav-item"><NavLink to="/results" exact activeClassName="nav-link-active" className="nav-link">Results</NavLink></li>
          </ul >
 
          <ul className="navbar-list navbar-list-right">
