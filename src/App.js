@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Axios from 'axios';
+import { checkStatus } from './store/actions/authActions';
 
 import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Dashboard from './components/Dashboard';
-import Tournaments from './components/Tournaments';
+import Tournaments from './components/Tournaments/Tournaments';
 import Schedule from './components/Schedule';
 import Session from './components/Session';
 import Results from './components/Results';
 
 class App extends Component {
    componentDidMount() {
-      Axios.get('/api/auth/status')
-         .then(res => this.props.loginUser(res.data.success, res.data.user))
-         .catch(err => console.log(err));
+      this.props.checkStatus();
    }
 
    render() {
@@ -59,23 +57,11 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
    return {
-      loggedIn: state.loggedIn
-   }
-};
-
-const mapDispatchToProps = (dispatch) => {
-   return {
-      loginUser: (loggedIn, user) => {
-         dispatch({ 
-            type: 'LOGIN_USER', 
-            loggedIn,
-            user 
-         }) 
-      }
+      loggedIn: state.auth.loggedIn
    }
 };
 
 export default connect(
    mapStateToProps,
-   mapDispatchToProps
+   { checkStatus }
 )(App);

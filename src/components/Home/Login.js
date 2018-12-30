@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Axios from 'axios';
+import { loginUser } from '../../store/actions/authActions';
 
 class Login extends Component {
    constructor(props) {
@@ -18,18 +18,12 @@ class Login extends Component {
 
    handleSubmit = (event) => {
       event.preventDefault();
-      
-      Axios.post('/api/auth/login', {
-            username: this.state.username,
-            password: this.state.password
-         })
-         .then((res) => this.props.loginUser(res.data.success, res.data.user))
-         .catch((err) => console.log(err.response.data));
+      this.props.loginUser(this.state.username, this.state.password);
    }
 
    render() {
       return(
-         <form onSubmit={this.handleSubmit}>
+         <form onSubmit={ this.handleSubmit }>
             <label htmlFor="username">Username</label>
             <input type="text" id="username" value={ this.state.username } onChange={ this.handleChange } />
 
@@ -42,26 +36,7 @@ class Login extends Component {
    }
 };
 
-const mapStateToProps = (state) => {
-   return {
-      loggedIn: state.loggedIn,
-      user: state.user
-   }
-};
-
-const mapDispatchToProps = (dispatch) => {
-   return {
-      loginUser: (loggedIn, user) => {
-         dispatch({ 
-            type: 'LOGIN_USER', 
-            loggedIn,
-            user 
-         }) 
-      }
-   }
-};
-
 export default connect(
-   mapStateToProps,
-   mapDispatchToProps
+   null,
+   { loginUser }
 )(Login);
