@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getTournaments } from '../../store/actions/tournamentActions';
 import TournamentList from './TournamentList';
+import Sidebar from './Sidebar';
+import './Tournaments.css';
 
 class Tournaments extends Component {
    constructor(props) {
@@ -17,9 +19,12 @@ class Tournaments extends Component {
       const tournaments = this.props.tournaments;
       
       return (
-         <div>
-            <h1>Tournaments</h1>
-            <TournamentList tournaments={ tournaments } />
+         <div className="content-wrapper">
+            <div className="main-container">
+               <h1 className="content-title"><span>{ tournaments.length }</span> tournaments found</h1>
+               <TournamentList tournaments={ tournaments } />            
+            </div>
+            <Sidebar />
          </div>
       )
    }
