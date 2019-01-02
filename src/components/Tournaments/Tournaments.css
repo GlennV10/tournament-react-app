@@ -29,6 +29,10 @@
    outline: none;
 }
 
+.tournament-container:last-child {
+   margin-bottom: 0;
+}
+
 /* Name */
 .tournament-general-container {
    display: flex;

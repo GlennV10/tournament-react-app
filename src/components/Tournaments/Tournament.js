@@ -1,7 +1,7 @@
 import React from 'react';
 import Pokerstars from '../../assets/images/PokerStars_emblem.svg';
 
-const Tournament = ({ tournament }) => {
+const Tournament = ({ tournament, schedule, addToSchedule, removeFromSchedule }) => {
    const { name, pokerroom, time, buyin } = tournament;
 
    return (
@@ -27,8 +27,13 @@ const Tournament = ({ tournament }) => {
             <button type="button" className="btn btn-details">
                <i className="fas fa-info-circle"></i> Details
             </button>
-            <button type="button" className="btn btn-favourite">
-               <i className="far fa-star"></i>
+            <button 
+               type="button" 
+               className="btn btn-favourite"
+               onClick={ schedule.some(t => t['_id'] === tournament['_id']) 
+                           ? removeFromSchedule.bind(this, tournament) 
+                           : addToSchedule.bind(this, tournament) }>
+                  <i className={ `${ schedule.some(t => t['_id'] === tournament['_id']) ? 'fas' : 'far' } fa-star` }></i>
             </button>
          </div>
       </div>
