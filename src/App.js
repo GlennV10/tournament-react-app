@@ -7,7 +7,7 @@ import Navbar from './components/Navbar/Navbar';
 import Home from './components/Home/Home';
 import Dashboard from './components/Dashboard';
 import Tournaments from './components/Tournaments/Tournaments';
-import Schedule from './components/Schedule';
+import Schedule from './components/Schedule/Schedule';
 import Session from './components/Session';
 import Results from './components/Results';
 

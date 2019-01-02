@@ -26,8 +26,7 @@ class Tournaments extends Component {
    };
 
    render() {
-      const tournaments = this.props.tournaments;
-      const schedule = this.props.schedule;
+      const { tournaments, schedule } = this.props;
       
       return (
          <div className="content-wrapper">
