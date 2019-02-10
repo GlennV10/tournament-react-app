@@ -7,7 +7,8 @@ const TournamentList = ({ tournaments, schedule, addToSchedule, removeFromSchedu
          {
             tournaments.map(tournament => {
                return (
-                  <Tournament key={ tournament._id } 
+                  <Tournament 
+                     key={ tournament._id } 
                      tournament={ tournament } 
                      schedule={ schedule }
                      addToSchedule={ addToSchedule } 

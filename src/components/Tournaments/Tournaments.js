@@ -19,12 +19,12 @@ class Tournaments extends Component {
 
    addToSchedule = (tournament) => {
       this.props.addToSchedule(tournament);
-   };
+   }
 
    removeFromSchedule = (tournament) => {
       this.props.removeFromSchedule(tournament._id);
-   };
-
+   }
+   
    render() {
       const { tournaments, schedule } = this.props;
       

@@ -1,8 +1,9 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import Pokerstars from '../../assets/images/PokerStars_emblem.svg';
 
-const Tournament = ({ tournament, schedule, addToSchedule, removeFromSchedule }) => {
-   const { name, pokerroom, time, buyin } = tournament;
+const Tournament = ({ tournament, schedule, addToSchedule, removeFromSchedule, history }) => {
+   const { _id, name, pokerroom, time, buyin } = tournament;
 
    return (
       <div className="tournament-container">
@@ -24,8 +25,11 @@ const Tournament = ({ tournament, schedule, addToSchedule, removeFromSchedule })
             </div>
          </div>
          <div className="tournament-button-container">
-            <button type="button" className="btn btn-details">
-               <i className="fas fa-info-circle"></i> Details
+            <button 
+               type="button" 
+               className="btn btn-details"
+               onClick={ () => history.push(`/tournaments/${_id}`)}>
+                  <i className="fas fa-info-circle"></i> Details
             </button>
             <button 
                type="button" 
@@ -40,4 +44,4 @@ const Tournament = ({ tournament, schedule, addToSchedule, removeFromSchedule })
    )
 };
 
-export default Tournament;
+export default withRouter(Tournament);

@@ -10,6 +10,7 @@ import Tournaments from './components/Tournaments/Tournaments';
 import Schedule from './components/Schedule/Schedule';
 import Session from './components/Session';
 import Results from './components/Results';
+import Tournament from './components/Tournament/Tournament';
 
 class App extends Component {
    componentDidMount() {
@@ -27,7 +28,7 @@ class App extends Component {
                   <Route exact path='/' render={() => (
                      !loggedIn ? ( <Home /> ) : ( <Dashboard /> )
                   )} />
-                  <Route path='/tournaments' render={() => (
+                  <Route exact path='/tournaments' render={() => (
                      !loggedIn 
                         ? ( <Redirect to="/" /> ) 
                         : ( <Tournaments /> )
@@ -46,6 +47,11 @@ class App extends Component {
                      !loggedIn 
                         ? ( <Redirect to="/" /> ) 
                         : ( <Results /> )
+                  )} />
+                  <Route path='/tournaments/:id' render={(props) => (
+                     !loggedIn 
+                        ? ( <Redirect to="/" /> ) 
+                        : ( <Tournament {...props} /> )
                   )} />
                   <Redirect from='*' to='/' />
                </Switch>
